@@ -40,12 +40,12 @@ function DotConfig(filepath) {
 		return this;
 	};
 
-	this.get = function(key, callback) {
+	this.get = function(key, fn) {
 		options = options || readFile(filepath);
 		if (key in options) {
 			return options[key];
 		} else {
-			callback(key);
+			if (typeof fn === 'function') fn(key);
 		}
 	};
 

@@ -1,6 +1,6 @@
 # user-settings
 
-__user-settings__ is a simple way to manage user settings for your command-line Node application. Settings are stored as a file in the user's home directory
+__user-settings__ is a simple way to manage user settings for your command-line Node application. Settings are stored as a file in the user's home directory.
 
 ## Usage
 

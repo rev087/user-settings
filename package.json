@@ -1,14 +1,14 @@
 {
-  "name": "dotconfig",
-  "version": "0.0.1",
-  "description": "Simple dotfile app settings management",
-  "main": "dotconfig.js",
+  "name": "user-settings",
+  "version": "v0.1.0",
+  "description": "Simple app user settings",
+  "main": "dots.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/rev087/dotconfig"
+    "url": "git://github.com/rev087/user-settings"
   },
   "keywords": [
     "settings",
@@ -19,7 +19,7 @@
   "author": "Bruno Daniel",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rev087/dotconfig/issues"
+    "url": "https://github.com/rev087/user-settings/issues"
   },
-  "homepage": "https://github.com/rev087/dotconfig"
+  "homepage": "https://github.com/rev087/user-settings"
 }

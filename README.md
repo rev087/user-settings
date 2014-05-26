@@ -14,7 +14,7 @@ var settings = require('user-settings').file('.myAppSettings');
 settings.set('username', 'rev087');
 
 // Retrieving user settings
-var username = settings.get('rev087');
+var username = settings.get('username');
 
 ```
 

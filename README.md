@@ -1,4 +1,23 @@
-dotconfig
-=========
+# user-settings
 
-Simple dotfile app settings management Node.js
+__user-settings__ is a simple way to manage user settings for your command-line Node application. Settings are stored as a file in the user's home directory
+
+## Usage
+
+You specify the filename to store and retrieve
+
+```js
+// If ~/.myAppSettings doesn't exist, it's created
+var settings = require('user-settings').file('.myAppSettings');
+
+// Storing user settings
+settings.set('username', 'rev087');
+
+// Retrieving user settings
+var username = settings.get('rev087');
+
+```
+
+## Home directory location
+
+The home directory used for Unix systems is process.env.HOME and process.env.USERPROFILE for Windows.

@@ -20,4 +20,4 @@ var username = settings.get('username');
 
 ## Home directory location
 
-The home directory used for Unix systems is process.env.HOME and process.env.USERPROFILE for Windows.
+The home directory used for Unix systems is `process.env.HOME` and `process.env.USERPROFILE` for Windows.

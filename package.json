@@ -1,6 +1,6 @@
 {
   "name": "user-settings",
-  "version": "v0.1.2",
+  "version": "v0.1.3",
   "description": "Simple user settings management",
   "main": "dots.js",
   "scripts": {

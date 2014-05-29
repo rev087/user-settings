@@ -51,7 +51,8 @@ function DotConfig(filepath) {
 
 	this.unset = function(key) {
 		options = options || readFile(filepath);
-		return delete options[key];
+		delete options[key];
+		fs.writeFileSync(filepath, JSON.stringify(options, null, 2));
 	};
 
 }

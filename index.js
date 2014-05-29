@@ -49,6 +49,11 @@ function DotConfig(filepath) {
 		}
 	};
 
+	this.unset = function(key) {
+		options = options || readFile(filepath);
+		return delete options[key];
+	};
+
 }
 
 module.exports = module.exports || {};

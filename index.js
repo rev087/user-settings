@@ -45,7 +45,7 @@ function DotConfig(filepath) {
 		if (key in options) {
 			return options[key];
 		} else {
-			return null;
+			return undefined;
 		}
 	};
 

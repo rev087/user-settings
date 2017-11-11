@@ -42,6 +42,11 @@ function DotConfig(filepath) {
 
 	this.get = function(key) {
 		options = options || readFile(filepath);
+
+		if (!key) {
+			return options;
+		}
+
 		if (key in options) {
 			return options[key];
 		} else {

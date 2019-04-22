@@ -1,77 +1,76 @@
 /* global require, process, module  */
-'use strict';
+"use strict";
 
-var fs = require('fs'),
-	path = require('path');
+var fs = require("fs"),
+  path = require("path");
 
 function DotConfig(filepath) {
+  var options = null;
 
-	var options = null;
+  function readFile(filepath) {
+    var rawData = "{}";
 
-	function readFile(filepath) {
+    try {
+      rawData = fs.readFileSync(filepath);
+    } catch (err) {
+      if (err.code === "ENOENT") {
+        fs.writeFileSync(filepath, rawData);
+      } else {
+        throw err;
+      }
+    }
 
-		var rawData = '{}';
+    try {
+      var options = JSON.parse(rawData);
+    } catch (err) {
+      err.filepath = filepath;
+      throw err;
+    }
 
-		try {
-			rawData = fs.readFileSync(filepath);
-		} catch(err) {
-			if (err.code === 'ENOENT') {
-				fs.writeFileSync(filepath, rawData);
-			} else {
-				throw err;
-			}
-		}
+    return options;
+  }
 
-		try {
-			var options = JSON.parse(rawData);
-		} catch(err) {
-			err.filepath = filepath;
-			throw err;
-		}
+  this.set = function(key, value) {
+    options = options || readFile(filepath);
+    options[key] = value;
+    fs.writeFileSync(filepath, JSON.stringify(options, null, 2));
+    return this;
+  };
 
-		return options;
+  this.get = function(key) {
+    options = options || readFile(filepath);
 
-	}
+    if (!key) {
+      return options;
+    }
 
-	this.set = function(key, value) {
-		options = options || readFile(filepath);
-		options[key] = value;
-		fs.writeFileSync(filepath, JSON.stringify(options, null, 2));
-		return this;
-	};
+    if (key in options) {
+      return options[key];
+    } else {
+      return undefined;
+    }
+  };
 
-	this.get = function(key) {
-		options = options || readFile(filepath);
-
-		if (!key) {
-			return options;
-		}
-
-		if (key in options) {
-			return options[key];
-		} else {
-			return undefined;
-		}
-	};
-
-	this.unset = function(key) {
-		options = options || readFile(filepath);
-		delete options[key];
-		fs.writeFileSync(filepath, JSON.stringify(options, null, 2));
-	};
-
+  this.unset = function(key) {
+    options = options || readFile(filepath);
+    delete options[key];
+    fs.writeFileSync(filepath, JSON.stringify(options, null, 2));
+  };
 }
 
 module.exports = module.exports || {};
 
 module.exports.file = function(filename) {
+  if (!filename || typeof filename !== typeof "") {
+    throw new Error("Invalid filename");
+  }
+  var filepath;
+  if (!path.isAbsolute(filename)) {
+    var homedir = process.env.HOME || process.env.USERPROFILE;
+    filepath = path.join(homedir, filename);
+  } else {
+    filepath = filename;
+  }
 
-	if (!filename || typeof filename !== typeof '') {
-		throw new Error('Invalid filename');
-	}
-
-	var homedir = process.env.HOME || process.env.USERPROFILE,
-		filepath = path.join(homedir, filename);
-
-	return new DotConfig(filepath);
+  return new DotConfig(filepath);
 };

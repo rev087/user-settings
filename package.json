@@ -1,14 +1,14 @@
 {
   "name": "user-settings",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Simple user settings management",
-  "main": "dots.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/rev087/user-settings"
+    "url": "git://github.com/jv-k/user-settings"
   },
   "keywords": [
     "settings",
@@ -16,10 +16,10 @@
     "user-settings",
     "dotfile"
   ],
-  "author": "Bruno Daniel",
+  "author": "John Valai",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rev087/user-settings/issues"
+    "url": "https://github.com/jv-k/user-settings/issues"
   },
-  "homepage": "https://github.com/rev087/user-settings"
+  "homepage": "https://github.com/jv-k/user-settings"
 }
